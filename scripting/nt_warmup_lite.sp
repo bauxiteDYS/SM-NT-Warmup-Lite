@@ -7,10 +7,10 @@
 
 public Plugin myinfo = {
     name = "NT Warmup Lite",
-    author = "bauxite, credits to Agiel, soft as HELL",
+    author = "Agiel, soft as HELL, edits by bauxite",
     description = "Enables TDM warmup on map start",
     version = "0.1.0",
-    url = ""
+    url = "https://github.com/bauxiteDYS/SM-NT-Warmup-Lite"
 };
 
 ConVar cWarmupEnabled; 
