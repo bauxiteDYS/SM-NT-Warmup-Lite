@@ -9,14 +9,14 @@ public Plugin myinfo = {
     name = "NT Warmup Lite",
     author = "Agiel, soft as HELL, edits by bauxite",
     description = "Enables TDM warmup on map start",
-    version = "0.1.0",
+    version = "0.1.1",
     url = "https://github.com/bauxiteDYS/SM-NT-Warmup-Lite"
 };
 
 ConVar cWarmupEnabled; 
 ConVar cWarmupTimelimit;
 ConVar cRestartCommand;
-Handle hWarmupTimer;
+Handle hWarmupTimer = INVALID_HANDLE;
 bool bCanEnable;
 
 public void OnPluginStart()
@@ -52,7 +52,7 @@ void StartWarmup()
 	
 	PrintToChatAll("Warmup started!");
 	
-	if(!IsValidHandle(hWarmupTimer))
+	if(hWarmupTimer == INVALID_HANDLE)
 	{
 		hWarmupTimer = CreateTimer(timeLimit, timer_EndWarmup, _, TIMER_FLAG_NO_MAPCHANGE);
 	}
@@ -60,6 +60,8 @@ void StartWarmup()
 
 public Action timer_EndWarmup(Handle timer)
 {
+	hWarmupTimer = INVALID_HANDLE;
+	
 	for(int i = 1; i <= MaxClients; i++)
 	{
 		if(!IsClientInGame(i))
