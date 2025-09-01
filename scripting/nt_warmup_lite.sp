@@ -32,6 +32,11 @@ public void OnMapInit()
 	bCanEnable = true;
 }
 
+public void OnMapEnd()
+{
+	hWarmupTimer = INVALID_HANDLE;
+}
+
 public void OnConfigsExecuted()
 {
 	if(!bCanEnable)
